@@ -1,0 +1,87 @@
+plugins {
+    id 'java'
+}
+
+group 'eyeo-chromium-desktop-test-automation'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenLocal()
+    maven {
+        url = 'https://repo.maven.apache.org/maven2'
+    }
+}
+
+dependencies {
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.2.2'
+    implementation 'junit:junit:4.13.2'
+    testImplementation 'io.cucumber:cucumber-java:7.2.3'
+    testImplementation 'io.cucumber:cucumber-junit:7.2.3'
+    testImplementation "io.github.bonigarcia:webdrivermanager:5.1.1"
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
+
+task cucumber() {
+    dependsOn assemble, compileTestJava
+    doLast {
+        javaexec {
+            mainClass = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            def tags = project.getProperties().get("tags")
+            args =
+                    ['--plugin', 'pretty',
+                     '--plugin', 'junit:target/cucumber-reports/Cucumber.xml',
+                     '--plugin', 'rerun:target/rerun.txt',
+                     '--glue', 'configuration',
+                     '--glue', 'steps', 'src/test/resources',
+                     '--tags', "${tags}"]
+        }
+    }
+}
+
+//task fullTestSuite(dependsOn: 'wpr') {
+//task wpr(type:Exec) {
+//    executable "sh"
+//    args "-c", "sh ./enable_wpr.sh"
+//}
+
+task fullTestSuite() {
+    dependsOn assemble, compileTestJava
+    doLast {
+        javaexec {
+            mainClass = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            def tags = project.getProperties().get("tags")
+            args =
+                    ['--plugin', 'pretty',
+                     '--plugin', 'junit:target/cucumber-reports/Cucumber.xml',
+                     '--plugin', 'rerun:target/rerun.txt',
+                     '--glue', 'configuration',
+                     '--glue', 'steps', 'src/test/resources',
+                     '--tags', "not @disabled"]
+        }
+    }
+}
+
+task rerunFailed() {
+    dependsOn assemble, compileTestJava
+    doLast {
+        javaexec {
+            main = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = ['--plugin', 'pretty',
+                    '--plugin', 'json:target/cucumber-reports/json/cucumber.json',
+                    '--glue', 'configuration',
+                    '--glue', 'steps', '@target/rerun.txt']
+        }
+    }
+}

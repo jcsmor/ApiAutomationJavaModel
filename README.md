@@ -1,4 +1,4 @@
-# abp_payload_measurement
+# abp_adwall_automation
 
 
 
@@ -15,14 +15,14 @@ Already a pro? Just edit this README.md and make it your own. Want to make it ea
 
 ```
 cd existing_repo
-git remote add origin https://gitlab.com/eyeo/distpartners/abp_payload_measurement.git
+git remote add origin https://gitlab.com/eyeo/distpartners/abp_adwall_automation.git
 git branch -M main
 git push -uf origin main
 ```
 
 ## Integrate with your tools
 
-- [ ] [Set up project integrations](https://gitlab.com/eyeo/distpartners/abp_payload_measurement/-/settings/integrations)
+- [ ] [Set up project integrations](https://gitlab.com/eyeo/distpartners/abp_adwall_automation/-/settings/integrations)
 
 ## Collaborate with your team
 

@@ -1,0 +1,21 @@
+# IDEA configuration:
+*.idea
+*.iml
+
+# Gradle cache:
+/.gradle/
+/local.properties
+
+# Output folder:
+/build/
+
+# Cucumber reports still are generated into target/:
+/target/
+
+# MacOS specific files:
+.DS_Store
+.DS_Store?
+
+# Generated images
+/src/test/resources/images/screenshots/
+
