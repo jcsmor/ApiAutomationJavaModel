@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'eyeo-chromium-desktop-test-automation'
+group 'abp_payload_measurement'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -48,13 +48,7 @@ task cucumber() {
     }
 }
 
-//task fullTestSuite(dependsOn: 'wpr') {
-//task wpr(type:Exec) {
-//    executable "sh"
-//    args "-c", "sh ./enable_wpr.sh"
-//}
-
-task fullTestSuite() {
+task payload() {
     dependsOn assemble, compileTestJava
     doLast {
         javaexec {
