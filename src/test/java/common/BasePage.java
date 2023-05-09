@@ -18,6 +18,7 @@ public class BasePage
   private static final int TIMEOUT = 24;
   public static final int MEDIUM_TIMEOUT = 12;
   public static final int SMALL_TIMEOUT = 6;
+  public static final int TINY_TIMEOUT = 3;
   public static final int MAX_CYCLES = 11;
 
   public BasePage(final WebDriver driver)

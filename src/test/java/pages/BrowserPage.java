@@ -9,10 +9,11 @@ import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.support.Color;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static common.BasePage.*;
 
@@ -28,6 +29,11 @@ public class BrowserPage
     final BasePage base = new BasePage(driver);
   }
 
+  public void clearAllCookies()
+  {
+    driver.manage().deleteAllCookies();
+  }
+
   public void saveBrowserLogs()
   {
     final LogEntries logs = getLogs("browser");
@@ -38,8 +44,9 @@ public class BrowserPage
     System.out.println(sessionBrowserLogs);
   }
 
-  public void saveBrowserPerformanceLogs()
+  public void saveBrowserPerformanceLogs() throws IOException
   {
+    // encodedDataLength Actual bytes received (might be less than dataLength for compressed encodings).
     final LogEntries logs = getLogs("performance");
     int encodedDataSize = 0;
     String encodedDataLength;
@@ -49,10 +56,26 @@ public class BrowserPage
       {
         encodedDataLength = line.getMessage().split("encodedDataLength\":")[1].split(",")[0];
         encodedDataSize = encodedDataSize + Integer.parseInt(encodedDataLength);
-        System.out.println(encodedDataLength);
+        //System.out.println(encodedDataLength);
       }
     }
     System.out.println(" Total size is : " + encodedDataSize);
+  }
+
+  public void savePerformanceResponse(final String str) throws IOException
+  {
+    final String LOG_PATH = "target/performanceLogs.txt";
+    try
+    {
+      final File newTextFile = new File(LOG_PATH);
+      final FileWriter fw = new FileWriter(newTextFile);
+      fw.write(str);
+      fw.close();
+    } catch (final IOException iox)
+    {
+      iox.printStackTrace();
+    }
+    waitSomeTime(TINY_TIMEOUT);
   }
 
   public void injectTestData()

@@ -1,6 +1,7 @@
 package steps;
 
 import static common.BasePage.*;
+import static pages.BrowserPage.*;
 
 import configuration.Configuration;
 import io.cucumber.java.en.And;
@@ -11,6 +12,8 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 
 import pages.BrowserPage;
+
+import java.io.IOException;
 
 public class BrowserTest
 {
@@ -42,8 +45,8 @@ public class BrowserTest
     browserPage.clearBrowserLogs();
   }
 
-  @When("I go to {string} and get browser extension logs")
-  public void iGoToAndGetBrowserExtensionLogs(final String url)
+  @When("I go to {string} and get bytes received")
+  public void iGoToAndGetBrowserExtensionLogs(final String url) throws IOException
   {
     goToUrl(url);
     browserPage.saveBrowserPerformanceLogs();
