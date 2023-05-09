@@ -11,6 +11,8 @@ import org.openqa.selenium.support.Color;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static common.BasePage.*;
 
@@ -34,6 +36,23 @@ public class BrowserPage
       sessionBrowserLogs.add(line.toString());
     }
     System.out.println(sessionBrowserLogs);
+  }
+
+  public void saveBrowserPerformanceLogs()
+  {
+    final LogEntries logs = getLogs("performance");
+    int encodedDataSize = 0;
+    String encodedDataLength;
+    for (final LogEntry line : logs)
+    {
+      if (line.getMessage().contains("Network.dataReceived"))
+      {
+        encodedDataLength = line.getMessage().split("encodedDataLength\":")[1].split(",")[0];
+        encodedDataSize = encodedDataSize + Integer.parseInt(encodedDataLength);
+        System.out.println(encodedDataLength);
+      }
+    }
+    System.out.println(" Total size is : " + encodedDataSize);
   }
 
   public void injectTestData()

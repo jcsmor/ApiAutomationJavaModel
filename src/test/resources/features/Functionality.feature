@@ -8,5 +8,4 @@ Feature: ABP Chromium - Basic Functionality
 
     Examples:
       | url                                                                                     |
-      | https://eyeo.com/                                                                       |
-      | https://www.portent.com/blog/seo/createxxx-a-great-404-page.htm                         |
+      | https://www.google.com/search?q=iphone&source=hp&ei=TnIIZMD1CIvagQb8z5mwBA&iflsig=AK50M_UAAAAAZAiAXuaTRudOg_erHsyrE8w6v6roM3OB&ved=0ahUKEwjA1KORnsz9AhULbcAKHfxnBkYQ4dUDCAs&uact=5&oq=iphone&gs_lcp=Cgdnd3Mtd2l6EAMyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEOgsILhCABBDHARDRAzoFCC4QgARQAFj0BmDlB2gAcAB4AIABV4gBvQOSAQE2mAEAoAEB&sclient=gws-wiz |

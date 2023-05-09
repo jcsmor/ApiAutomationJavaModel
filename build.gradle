@@ -54,7 +54,6 @@ task payload() {
         javaexec {
             mainClass = "io.cucumber.core.cli.Main"
             classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
-            def tags = project.getProperties().get("tags")
             args =
                     ['--plugin', 'pretty',
                      '--plugin', 'junit:target/cucumber-reports/Cucumber.xml',

@@ -46,6 +46,6 @@ public class BrowserTest
   public void iGoToAndGetBrowserExtensionLogs(final String url)
   {
     goToUrl(url);
-    browserPage.saveBrowserExtensionLogs(url);
+    browserPage.saveBrowserPerformanceLogs();
   }
 }
