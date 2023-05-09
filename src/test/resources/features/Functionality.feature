@@ -3,6 +3,8 @@ Feature: ABP Chromium - Basic Functionality
   Scenario Outline: Get bytes received with ABP enabled
     Given I go to AdBlocking Settings
     And I wait until extensions are installed
+    And I go to AdBlocking extension settings
+    And I wait some time
     And I verify ABP is enabled
     When I go to "<url>" and get bytes received
 

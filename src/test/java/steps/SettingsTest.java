@@ -19,7 +19,12 @@ public class SettingsTest
   public void goToAdblockingSettings()
   {
     goToUrl("chrome://extensions/?id=cfhdojbkjhnklbpkdaibdccddilifddb");
-    //goToUrl("chrome-extension://cfhdojbkjhnklbpkdaibdccddilifddb/options.html");
+  }
+
+  @Given("I go to AdBlocking extension settings")
+  public void goToAdblockExtensionSettings()
+  {
+    goToUrl("chrome-extension://cfhdojbkjhnklbpkdaibdccddilifddb/options.html");
   }
 
   @Then("I verify ABP is enabled")
