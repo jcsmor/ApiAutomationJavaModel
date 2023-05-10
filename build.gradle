@@ -13,11 +13,11 @@ repositories {
 }
 
 dependencies {
-    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.2.2'
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.9.1'
     implementation 'junit:junit:4.13.2'
     testImplementation 'io.cucumber:cucumber-java:7.2.3'
     testImplementation 'io.cucumber:cucumber-junit:7.2.3'
-    testImplementation "io.github.bonigarcia:webdrivermanager:5.1.1"
+    testImplementation "io.github.bonigarcia:webdrivermanager:5.3.2"
 }
 
 tasks.withType(JavaCompile) {
@@ -27,24 +27,6 @@ tasks.withType(JavaCompile) {
 configurations {
     cucumberRuntime {
         extendsFrom testImplementation
-    }
-}
-
-task cucumber() {
-    dependsOn assemble, compileTestJava
-    doLast {
-        javaexec {
-            mainClass = "io.cucumber.core.cli.Main"
-            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
-            def tags = project.getProperties().get("tags")
-            args =
-                    ['--plugin', 'pretty',
-                     '--plugin', 'junit:target/cucumber-reports/Cucumber.xml',
-                     '--plugin', 'rerun:target/rerun.txt',
-                     '--glue', 'configuration',
-                     '--glue', 'steps', 'src/test/resources',
-                     '--tags', "${tags}"]
-        }
     }
 }
 

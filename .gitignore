@@ -9,6 +9,9 @@
 # Output folder:
 /build/
 
+# Output of test data
+/data/
+
 # Cucumber reports still are generated into target/:
 /target/
 

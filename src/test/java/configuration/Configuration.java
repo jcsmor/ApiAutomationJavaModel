@@ -14,7 +14,11 @@ import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.logging.LoggingPreferences;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.logging.Level;
+
+import pages.BrowserPage;
+import steps.BrowserTest;
 
 public class Configuration
 {
@@ -33,12 +37,13 @@ public class Configuration
     options.setCapability(ChromeOptions.LOGGING_PREFS, logPrefs);
     options.addExtensions(new File(EXTENSION_FILE));
 
-    //options.addArguments("--incognito");
+    options.addArguments("--incognito");
     options.addArguments("--remote-debugging-port=61379");
     options.addArguments("--remote-allow-origins=http://localhost:61379");
 
     driver = new ChromeDriver(options);
   }
+
 
 
   @After

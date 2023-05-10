@@ -108,7 +108,6 @@ public class BasePage
   public static void getPageSource()
   {
     System.out.println(driver.getPageSource());
-    System.out.println(driver.getCurrentUrl());
   }
 
   public static Boolean isTextPresent(final By selector, final String text)
@@ -199,5 +198,7 @@ public class BasePage
   {
     return driver.manage().logs().get(logType.toLowerCase());
   }
+
+
 
 }

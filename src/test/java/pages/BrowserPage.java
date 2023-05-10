@@ -9,10 +9,10 @@ import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.support.Color;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static common.BasePage.*;
@@ -22,6 +22,7 @@ public class BrowserPage
   private final WebDriver driver;
   public List<String> sessionBrowserLogs = new ArrayList<String>();
   public List<String> sessionBrowserExtensionLogs = new ArrayList<String>();
+  public List<String> sitesList = new ArrayList<String>();
 
   public BrowserPage(final WebDriver driver)
   {
@@ -34,6 +35,21 @@ public class BrowserPage
     driver.manage().deleteAllCookies();
   }
 
+
+  public void readSitesFromFile(final String filePath){
+    try {
+      final FileReader reader = new FileReader(filePath);
+      final BufferedReader bufferedReader = new BufferedReader(reader);
+      String line;
+      while ((line = bufferedReader.readLine()) != null) {
+        sitesList.add(line.toString());
+      }
+      reader.close();
+    } catch (final IOException e) {
+      e.printStackTrace();
+    }
+  }
+
   public void saveBrowserLogs()
   {
     final LogEntries logs = getLogs("browser");
@@ -41,10 +57,10 @@ public class BrowserPage
     {
       sessionBrowserLogs.add(line.toString());
     }
-    System.out.println(sessionBrowserLogs);
+    //System.out.println(sessionBrowserLogs);
   }
 
-  public void saveBrowserPerformanceLogs() throws IOException
+  public int getEncodedDataSize() throws IOException
   {
     // encodedDataLength Actual bytes received (might be less than dataLength for compressed encodings).
     final LogEntries logs = getLogs("performance");
@@ -60,6 +76,38 @@ public class BrowserPage
       }
     }
     System.out.println(" Total size is : " + encodedDataSize);
+    return encodedDataSize;
+  }
+
+  public void savePerformanceDataToFile(final String LOG_PATH, final String url, final int dataReceived)
+  {
+    final Date date = new Date();
+    final Timestamp timestamp = new Timestamp(date.getTime());
+
+    final String str = timestamp + ", URL:" + url + ", DATA_RECEIVED:" + dataReceived + '\n';
+    try
+    {
+      final File newTextFile = new File(LOG_PATH);
+      final FileWriter fw = new FileWriter(newTextFile, true);
+      fw.write(str);
+      fw.close();
+    } catch (final IOException iox)
+    {
+      iox.printStackTrace();
+    }
+    waitSomeTime(TINY_TIMEOUT);
+  }
+
+  public static void createEmptyFile(final String filename)
+  {
+    try
+    {
+      final File newTextFile = new File(filename);
+      new FileWriter(newTextFile, false).close();
+    } catch (final IOException iox)
+    {
+      iox.printStackTrace();
+    }
   }
 
   public void savePerformanceResponse(final String str) throws IOException
