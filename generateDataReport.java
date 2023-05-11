@@ -68,7 +68,7 @@ class Scratch
       fw.write("TOTAL DATA TRANSFERRED FOR THE SAMPLED SITES WITH AA ON: " + sumON + "\n");
       fw.write("TOTAL DATA TRANSFERRED FOR THE SAMPLED SITES WITH AA OFF: " + sumOFF + "\n\n\n");
       fw.write("TOTAL DIFFERENCE: " + diference + "\n");
-      fw.write("PERCENTAGE GAIN: " + formattedString + "\n");
+      fw.write("PERCENTAGE GAIN WITH AA ON: " + formattedString + "\n");
       fw.close();
     }
     catch (final IOException iox)
