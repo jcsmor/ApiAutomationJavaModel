@@ -67,7 +67,7 @@ class Scratch
       fw.write("*********** DATA TRANSFERRED WITH AA ON AND AA OFF ***********" + "\n\n\n");
       fw.write("TOTAL DATA TRANSFERRED FOR THE SAMPLED SITES WITH AA ON: " + sumON + "\n");
       fw.write("TOTAL DATA TRANSFERRED FOR THE SAMPLED SITES WITH AA OFF: " + sumOFF + "\n\n\n");
-      fw.write("TOTAL DIFERENCE: " + diference + "\n");
+      fw.write("TOTAL DIFFERENCE: " + diference + "\n");
       fw.write("PERCENTAGE GAIN: " + formattedString + "\n");
       fw.close();
     }
