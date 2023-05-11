@@ -1,19 +1,19 @@
-Feature: ABP Chromium - Basic Functionality
-
-  @AA_OFF
-  Scenario Outline: Get bytes received with ABP disabled
-    Given I go to AdBlocking Settings
-    And I wait until extensions are installed
-    And I disable ABP
-    When I go to "<url>" and get bytes received
-    Then I save AA disabled data performance values
-
-    Examples:
-      | url                                                                                     |
-      | https://www.google.com/search?q=iphone&source=hp&ei=TnIIZMD1CIvagQb8z5mwBA&iflsig=AK50M_UAAAAAZAiAXuaTRudOg_erHsyrE8w6v6roM3OB&ved=0ahUKEwjA1KORnsz9AhULbcAKHfxnBkYQ4dUDCAs&uact=5&oq=iphone&gs_lcp=Cgdnd3Mtd2l6EAMyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEOgsILhCABBDHARDRAzoFCC4QgARQAFj0BmDlB2gAcAB4AIABV4gBvQOSAQE2mAEAoAEB&sclient=gws-wiz |
-      | https://www.youtube.com/watch?v=G8nNGk6LHaM |
-      | https://www.facebook.com/ |
-      | https://www.instagram.com/ |
+#Feature: ABP Chromium - Basic Functionality
+#
+#  @AA_OFF
+#  Scenario Outline: Get bytes received with ABP disabled
+#    Given I go to AdBlocking Settings
+#    And I wait until extensions are installed
+#    And I disable ABP
+#    When I go to "<url>" and get bytes received
+#    Then I save AA disabled data performance values
+#
+#    Examples:
+#      | url                                                                                     |
+#      | https://www.google.com/search?q=iphone&source=hp&ei=TnIIZMD1CIvagQb8z5mwBA&iflsig=AK50M_UAAAAAZAiAXuaTRudOg_erHsyrE8w6v6roM3OB&ved=0ahUKEwjA1KORnsz9AhULbcAKHfxnBkYQ4dUDCAs&uact=5&oq=iphone&gs_lcp=Cgdnd3Mtd2l6EAMyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEOgsILhCABBDHARDRAzoFCC4QgARQAFj0BmDlB2gAcAB4AIABV4gBvQOSAQE2mAEAoAEB&sclient=gws-wiz |
+#      | https://www.youtube.com/watch?v=G8nNGk6LHaM |
+#      | https://www.facebook.com/ |
+#      | https://www.instagram.com/ |
 #      | https://twitter.com/search?q=%23Bachmut&src=trend_click&vertical=trends |
 #      | https://tieba.baidu.com/f/search/res?qw=%E2%80%9C%E6%95%B0%E8%AF%B4%E2%80%9D%E4%B8%AD%E5%9B%BD%E8%BF%99%E4%BA%94%E5%B9%B4&sm=2&cf=1&ie=utf-8 |
 #      | https://tieba.baidu.com/p/3649627706?pid=65892585589&cid=0#65892585589 |

@@ -37,7 +37,7 @@ public class Configuration
     options.setCapability(ChromeOptions.LOGGING_PREFS, logPrefs);
     options.addExtensions(new File(EXTENSION_FILE));
 
-    options.addArguments("--incognito");
+    //options.addArguments("--incognito");
     options.addArguments("--remote-debugging-port=61379");
     options.addArguments("--remote-allow-origins=http://localhost:61379");
 

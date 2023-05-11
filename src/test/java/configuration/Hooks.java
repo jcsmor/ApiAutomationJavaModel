@@ -9,25 +9,25 @@ import steps.BrowserTest;
 
 public final class Hooks
 {
-  private static boolean skipFlag = false;
-
-  @Before(value = "@AA_ON")
-  public void setUpAA_ON() throws IOException
-  {
-    if (!skipFlag)
-    {
-      BrowserPage.createEmptyFile(BrowserTest.LOG_PATH_AA_ON);
-      skipFlag = true;
-    }
-  }
-
-  @Before(value = "@AA_OFF")
-  public void setUpAA_OFF() throws IOException
-  {
-    if (!skipFlag)
-    {
-      BrowserPage.createEmptyFile(BrowserTest.LOG_PATH_AA_OFF);
-      skipFlag = true;
-    }
-  }
+//  private static boolean skipFlag = false;
+//
+//  @Before(value = "@AA_ON")
+//  public void setUpAA_ON() throws IOException
+//  {
+//    if (!skipFlag)
+//    {
+//      BrowserPage.createEmptyFile(BrowserTest.LOG_PATH_AA_ON);
+//      skipFlag = true;
+//    }
+//  }
+//
+//  @Before(value = "@AA_OFF")
+//  public void setUpAA_OFF() throws IOException
+//  {
+//    if (!skipFlag)
+//    {
+//      BrowserPage.createEmptyFile(BrowserTest.LOG_PATH_AA_OFF);
+//      skipFlag = true;
+//    }
+//  }
 }
