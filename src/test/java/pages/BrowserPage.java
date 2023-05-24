@@ -60,6 +60,16 @@ public class BrowserPage
     //System.out.println(sessionBrowserLogs);
   }
 
+  public String getPerformanceLogs()
+  {
+    final LogEntries logs = getLogs("performance");
+    for (final LogEntry line : logs)
+    {
+      sessionBrowserLogs.add(line.toString());
+    }
+    return sessionBrowserLogs.toString();
+  }
+
   public int getEncodedDataSize() throws IOException
   {
     // encodedDataLength Actual bytes received (might be less than dataLength for compressed encodings).

@@ -33,6 +33,13 @@ public class BrowserTest
     browserPage.saveBrowserLogs();
   }
 
+  @And("I get and save performance browser logs")
+  public void iGetPerformanceBrowserLogs() throws IOException
+  {
+    final String perfLogs = browserPage.getPerformanceLogs();
+    browserPage.savePerformanceResponse(perfLogs);
+  }
+
   @And("I get browser extension logs")
   public void iGetBrowserExtensionLogs()
   {
