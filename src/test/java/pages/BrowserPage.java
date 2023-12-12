@@ -2,6 +2,7 @@ package pages;
 
 import com.google.gson.Gson;
 import common.BasePage;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -253,4 +254,10 @@ public class BrowserPage
     final String color = find(selector).getCssValue("background-color");
     return Color.fromString(color).asHex();
   }
+
+  public void validateNumberMenus(final int numElements)
+  {
+    Assert.assertEquals("The number of menus is not 5", numElements, 5);
+  }
+
 }

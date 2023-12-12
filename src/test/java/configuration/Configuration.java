@@ -24,7 +24,6 @@ public class Configuration
 {
 
   private static WebDriver driver;
-  private static final String EXTENSION_FILE = "abp.crx";
 
   @Before
   public static void setUp()
@@ -35,11 +34,10 @@ public class Configuration
     final LoggingPreferences logPrefs = new LoggingPreferences();
     logPrefs.enable(LogType.PERFORMANCE, Level.ALL);
     options.setCapability(ChromeOptions.LOGGING_PREFS, logPrefs);
-    options.addExtensions(new File(EXTENSION_FILE));
 
     //options.addArguments("--incognito");
-    options.addArguments("--remote-debugging-port=61379");
-    options.addArguments("--remote-allow-origins=http://localhost:61379");
+    //options.addArguments("--remote-debugging-port=61379");
+    //options.addArguments("--remote-allow-origins=http://localhost:61379");
 
     driver = new ChromeDriver(options);
   }
