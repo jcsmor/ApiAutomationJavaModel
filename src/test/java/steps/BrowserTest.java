@@ -15,6 +15,7 @@ import java.io.IOException;
 public class BrowserTest
 {
   private final BrowserPage browserPage = new BrowserPage(Configuration.getDriver());
+
   private int dataReceived = 0;
   private String url;
   public static final String LOG_PATH_AA_ON = "target/AA_ON.txt";
@@ -25,7 +26,6 @@ public class BrowserTest
   {
     goToUrl(url);
   }
-
 
   @And("I get browser logs")
   public void iGetBrowserLogs()
@@ -72,9 +72,4 @@ public class BrowserTest
     browserPage.savePerformanceDataToFile(LOG_PATH_AA_OFF, url, dataReceived);
   }
 
-  @And("I validate presence of {int} main menus")
-  public void iValidatePresenceOfMainMenus(final int numMenus)
-  {
-    browserPage.validateNumberMenus(numMenus);
-  }
 }

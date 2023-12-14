@@ -34,7 +34,7 @@ public class Configuration
     final ChromeOptions options = new ChromeOptions();
 
     final LoggingPreferences logPrefs = new LoggingPreferences();
-    logPrefs.enable(LogType.PERFORMANCE, Level.ALL);
+    logPrefs.enable(LogType.BROWSER, Level.ALL);
     options.setCapability(ChromeOptions.LOGGING_PREFS, logPrefs);
 
     //options.addArguments("--incognito");

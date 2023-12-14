@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Set;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
-import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 
 public class BasePage
 {
@@ -202,6 +201,18 @@ public class BasePage
     return driver.manage().logs().get(logType.toLowerCase());
   }
 
+  public static void sendText(final By locator, final String text)
+  {
+    sendText(locator, 0, text);
+  }
+
+  public static void sendText(final By locator, final int index, final String text)
+  {
+    final WebElement textField = find(locator, index);
+    textField.clear();
+    textField.click();
+    textField.sendKeys(text);
+  }
 
 
 }

@@ -8,6 +8,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.support.Color;
 
 import java.io.*;
@@ -41,16 +42,21 @@ public class BrowserPage
   }
 
 
-  public void readSitesFromFile(final String filePath){
-    try {
+  public void readSitesFromFile(final String filePath)
+  {
+    try
+    {
       final FileReader reader = new FileReader(filePath);
       final BufferedReader bufferedReader = new BufferedReader(reader);
       String line;
-      while ((line = bufferedReader.readLine()) != null) {
+      while ((line = bufferedReader.readLine()) != null)
+      {
         sitesList.add(line.toString());
       }
       reader.close();
-    } catch (final IOException e) {
+    }
+    catch (final IOException e)
+    {
       e.printStackTrace();
     }
   }
@@ -63,6 +69,25 @@ public class BrowserPage
       sessionBrowserLogs.add(line.toString());
     }
     //System.out.println(sessionBrowserLogs);
+  }
+
+  public void validateLogStatus(final String status)
+  {
+    boolean result = false;
+    final LogEntries logs = getLogs("browser");
+
+    for (final LogEntry line : logs)
+    {
+      if (line.toString().contains("status of"))
+      {
+        final String myStatusCode = line.toString().split("status of ")[1].substring(0, 3);
+        //System.out.println(myStatusCode);
+        Assert.assertEquals("Status code do not match", status, myStatusCode);
+        result = true;
+        break;
+      }
+    }
+    Assert.assertTrue("Status of msg do not exist", result);
   }
 
   public String getPerformanceLogs()
@@ -106,7 +131,8 @@ public class BrowserPage
       final FileWriter fw = new FileWriter(newTextFile, true);
       fw.write(str);
       fw.close();
-    } catch (final IOException iox)
+    }
+    catch (final IOException iox)
     {
       iox.printStackTrace();
     }
@@ -119,7 +145,8 @@ public class BrowserPage
     {
       final File newTextFile = new File(filename);
       new FileWriter(newTextFile, false).close();
-    } catch (final IOException iox)
+    }
+    catch (final IOException iox)
     {
       iox.printStackTrace();
     }
@@ -134,7 +161,8 @@ public class BrowserPage
       final FileWriter fw = new FileWriter(newTextFile);
       fw.write(str);
       fw.close();
-    } catch (final IOException iox)
+    }
+    catch (final IOException iox)
     {
       iox.printStackTrace();
     }
@@ -259,10 +287,5 @@ public class BrowserPage
     return Color.fromString(color).asHex();
   }
 
-  public void validateNumberMenus(final int numElements)
-  {
-    final int foundEls = findElements(MAIN_MENUS).toArray().length;
-    Assert.assertEquals("The number of menus is not 5", numElements, foundEls);
-  }
 
 }

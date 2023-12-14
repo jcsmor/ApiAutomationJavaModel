@@ -11,7 +11,7 @@ import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebElement;
 import pages.SettingsPage;
 
-public class SettingsTest
+public class SettingsSteps
 {
   private final SettingsPage settingsPage = new SettingsPage(Configuration.getDriver());
 
