@@ -28,6 +28,8 @@ public class Configuration
   @Before
   public static void setUp()
   {
+    //final WebDriver driver = new ChromeDriver();
+
     WebDriverManager.chromedriver().setup();
     final ChromeOptions options = new ChromeOptions();
 

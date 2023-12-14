@@ -12,6 +12,9 @@ import java.time.Duration;
 import java.util.List;
 import java.util.Set;
 
+import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
+import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
+
 public class BasePage
 {
   private static WebDriver driver;
@@ -25,7 +28,6 @@ public class BasePage
   {
     BasePage.driver = driver;
   }
-
 
   public static void waitForCondition(final ExpectedCondition condition, final int timeout)
   {
@@ -46,6 +48,7 @@ public class BasePage
   public static WebElement find(final By locator, final int index)
   {
     waitForCondition(ExpectedConditions.presenceOfElementLocated(locator));
+    waitForCondition(ExpectedConditions.elementToBeClickable(locator));
     final List<WebElement> elements = driver.findElements(locator);
     if (elements.size() > 1)
     {

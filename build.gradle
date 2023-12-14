@@ -30,7 +30,7 @@ configurations {
     }
 }
 
-task payload() {
+task testing() {
     dependsOn assemble, compileTestJava
     doLast {
         javaexec {

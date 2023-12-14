@@ -20,6 +20,10 @@ import static common.BasePage.*;
 
 public class BrowserPage
 {
+  //Page Locators
+  private static final By MAIN_MENUS = By.cssSelector(".navbar-menu .menu_dp-link");
+
+  //
   private final WebDriver driver;
   public List<String> sessionBrowserLogs = new ArrayList<String>();
   public List<String> sessionBrowserExtensionLogs = new ArrayList<String>();
@@ -257,7 +261,8 @@ public class BrowserPage
 
   public void validateNumberMenus(final int numElements)
   {
-    Assert.assertEquals("The number of menus is not 5", numElements, 5);
+    final int foundEls = findElements(MAIN_MENUS).toArray().length;
+    Assert.assertEquals("The number of menus is not 5", numElements, foundEls);
   }
 
 }

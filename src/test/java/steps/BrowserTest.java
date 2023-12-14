@@ -72,7 +72,7 @@ public class BrowserTest
     browserPage.savePerformanceDataToFile(LOG_PATH_AA_OFF, url, dataReceived);
   }
 
-  @And("I validate presence of {string} main menus")
+  @And("I validate presence of {int} main menus")
   public void iValidatePresenceOfMainMenus(final int numMenus)
   {
     browserPage.validateNumberMenus(numMenus);
