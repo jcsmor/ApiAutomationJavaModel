@@ -2,16 +2,8 @@ package pages;
 
 import common.BasePage;
 import org.junit.Assert;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.logging.LogEntries;
-import org.openqa.selenium.logging.LogEntry;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 import static common.BasePage.*;
 
@@ -22,7 +14,6 @@ public class EmailVerPage
   private final By SUBMIT_EMAIL_BTN = By.cssSelector("input[type='submit']");
 
 
-  //
   private final WebDriver driver;
 
   public EmailVerPage(final WebDriver driver)
@@ -39,7 +30,7 @@ public class EmailVerPage
 
   public void validateErrorMsg()
   {
-    final String  errorMsg = getAttributeFromElement("validationMessage", find(EMAIL_INPUT));
+    final String errorMsg = getAttributeFromElement("validationMessage", find(EMAIL_INPUT));
     //System.out.println(errorMsg);
     Assert.assertEquals("Validation messages do not match", errorMsg, "A part followed by '@' should not contain the symbol ' '.");
   }
