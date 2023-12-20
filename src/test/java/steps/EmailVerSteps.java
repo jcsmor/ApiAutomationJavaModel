@@ -17,7 +17,7 @@ public class EmailVerSteps
   @When("I enter a invalid email")
   public void iEnterAInvalidEmail()
   {
-    emailVPage.addInvalidEmail("2 @2.com");
+    emailVPage.addInvalidEmail("request@hotmail.com");
   }
 
   @Then("I validate browser log status {string}")

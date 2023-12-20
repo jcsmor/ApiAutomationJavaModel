@@ -12,6 +12,7 @@ public class EmailVerPage
   //Page Locators
   private final By EMAIL_INPUT = By.cssSelector("#email");
   private final By SUBMIT_EMAIL_BTN = By.cssSelector("input[type='submit']");
+  private final By ERROR_MSG = By.cssSelector(".error-text");
 
 
   private final WebDriver driver;
@@ -30,8 +31,10 @@ public class EmailVerPage
 
   public void validateErrorMsg()
   {
-    final String errorMsg = getAttributeFromElement("validationMessage", find(EMAIL_INPUT));
+    //final String errorMsg = getAttributeFromElement("validationMessage", find(EMAIL_INPUT));
+    final String errorMsg = find(ERROR_MSG).getText();
+
     //System.out.println(errorMsg);
-    Assert.assertEquals("Validation messages do not match", errorMsg, "A part followed by '@' should not contain the symbol ' '.");
+    Assert.assertEquals("Validation messages do not match", errorMsg, "Apologies, but only corporate emails are accepted. Please try again using a business email address.");
   }
 }

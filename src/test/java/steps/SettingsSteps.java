@@ -48,7 +48,7 @@ public class SettingsSteps
   @Then("I wait some time")
   public void iWaitSomeTime()
   {
-    waitSomeTime(MEDIUM_TIMEOUT);
+    waitSomeTime(SMALL_TIMEOUT);
   }
 
   @Then("I wait until extensions are installed")

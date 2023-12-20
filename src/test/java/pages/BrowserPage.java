@@ -81,7 +81,7 @@ public class BrowserPage
       if (line.toString().contains("status of"))
       {
         final String myStatusCode = line.toString().split("status of ")[1].substring(0, 3);
-        //System.out.println(myStatusCode);
+        System.out.println(myStatusCode);
         Assert.assertEquals("Status code do not match", status, myStatusCode);
         result = true;
         break;
