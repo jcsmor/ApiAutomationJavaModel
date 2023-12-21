@@ -24,6 +24,7 @@ public class Configuration
 {
 
   private static WebDriver driver;
+  private static final String EXTENSION_FILE = "githubSize.crx";
 
   @Before
   public static void setUp()
@@ -36,6 +37,7 @@ public class Configuration
     final LoggingPreferences logPrefs = new LoggingPreferences();
     logPrefs.enable(LogType.BROWSER, Level.ALL);
     options.setCapability(ChromeOptions.LOGGING_PREFS, logPrefs);
+    options.addExtensions(new File(EXTENSION_FILE));
 
     //options.addArguments("--incognito");
     //options.addArguments("--remote-debugging-port=61379");

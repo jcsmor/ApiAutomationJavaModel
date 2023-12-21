@@ -7,6 +7,7 @@ import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pages.SettingsPage;
 
 import java.time.Duration;
 import java.util.List;
@@ -212,6 +213,11 @@ public class BasePage
     textField.clear();
     textField.click();
     textField.sendKeys(text);
+  }
+
+  public static void acceptAlert()
+  {
+    driver.switchTo().alert().accept();
   }
 
 
