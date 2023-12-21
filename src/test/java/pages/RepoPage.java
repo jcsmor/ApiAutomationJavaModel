@@ -62,6 +62,15 @@ public class RepoPage
 //    https://www.vogella.com/tutorials/JavaRegularExpressions/article.html
 //  }
 
+  private boolean checkFormat (final String s){
+    final Pattern pattern = Pattern.compile("\\d{3}");
+    final Matcher matcher = pattern.matcher(s);
+    if (matcher.find()){
+      return true;
+    }
+    return false;
+  }
+
 
 
 }
