@@ -35,6 +35,16 @@ public class apiWeatherSteps {
     public void theResponseMinTemperatureIsBelowOrEqualMaxTemperature() {
         ApiWeather.compareMinMaxTemp();
     }
+
+    @When("Call current weather data for one location by city id {string}")
+    public void callCurrentWeatherDataForOneLocationByCityId(final String cityID) {
+        ApiWeather.callByCityID(cityID);
+    }
+
+    @And("the body id equals searched city id {string}")
+    public void theBodyIdEqualsSearchedCityIdId(final String cityID) {
+        ApiWeather.getBodyID(cityID);
+    }
 }
 
  /*

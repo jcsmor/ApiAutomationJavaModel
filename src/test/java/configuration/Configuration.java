@@ -55,7 +55,7 @@ public class Configuration
   @After
   public static void TearDown(final Scenario scenario)
   {
-    driver.quit();
+    //driver.quit();
   }
 
   public static WebDriver getDriver()

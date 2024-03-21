@@ -9,12 +9,12 @@ import java.util.ArrayList;
 
 import static io.restassured.RestAssured.basePath;
 import static io.restassured.RestAssured.given;
+import static java.lang.Integer.parseInt;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
 
-public class ApiWeather
-{
+public class ApiWeather {
     private static Response response;
     private static ValidatableResponse json;
     private static RequestSpecification request;
@@ -29,10 +29,10 @@ public class ApiWeather
     }
 
     public static void getStatusResponseCode(Integer statusCode) {
-        //System.out.println(response.path("cod").toString());
-        final String myCode = response.path("cod").toString();
-        assertThat(myCode, equalTo(statusCode.toString()));
+        //final String myCode = response.path("cod").toString();
+        //assertThat(myCode, equalTo(statusCode.toString()));
         //response.then().statusCode(statusCode);
+        response.then().assertThat().statusCode(statusCode);
     }
 
     public static void getContentType() {
@@ -40,11 +40,12 @@ public class ApiWeather
     }
 
     public static void getBodyName(String city) {
+        //System.out.println(response.path("name").toString());
         response.then().body("name", equalTo(city));
     }
 
-    public static void getBodyID(Integer id) {
-        response.then().body("id", equalTo(id));
+    public static void getBodyID(String id) {
+        response.then().body("id", equalTo(parseInt(id)));
     }
 
     public static void callByCityID(String id) {
@@ -52,13 +53,13 @@ public class ApiWeather
         response = request.when().get(ENDPOINT);
     }
 
-    public static void getTemperature(){
+    public static void getTemperature() {
         String result = response.path("main.temp").toString();
         Double dResult = Double.valueOf(result);
         assertThat(dResult, instanceOf(Double.TYPE));
     }
 
-    public static void compareMinMaxTemp(){
+    public static void compareMinMaxTemp() {
         Float tempMin = response.path("main.temp_min");
         Float tempMax = response.path("main.temp_max");
         assertThat(tempMax, is(greaterThanOrEqualTo(tempMin)));
