@@ -34,10 +34,10 @@ public class Configuration
     options.addArguments("--lang=en");
     options.addArguments("--no-sandbox");
     options.addArguments("--disable-dev-shm-usage");
-    options.addArguments("--start-maximized");
+    //options.addArguments("--start-maximized");
     options.addArguments("--disable-popup-blocking");
     WebDriverManager.chromedriver().clearDriverCache().setup();
-    driver = new ChromeDriver(options);
+    //driver = new ChromeDriver(options);
 
     final LoggingPreferences logPrefs = new LoggingPreferences();
     logPrefs.enable(LogType.BROWSER, Level.ALL);

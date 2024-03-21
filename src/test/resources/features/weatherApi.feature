@@ -1,18 +1,18 @@
-#Feature: Get Current weather data
-#
-#  Scenario Outline: User calls current weather data using city name <name>
-#    When Call current weather data for one location by city name <name>
-#    Then the status response code is 200
-#    And the response content type is JSON
+Feature: Get Current weather data
+
+  Scenario Outline: User calls current weather data using city name <name>
+    When Call current weather data for one location by city name <name>
+    Then the status response code is 200
+    And the response content type is JSON
 #    And the response name equals searched city name <name>
 #    And the response has a valid temperature
 #    And the response min temperature is below or equal max temperature
-#
-#    Examples:
-#      | name       |
-#      | London     |
-#      | Lisbon     |
-#      | Cairns     |
+
+    Examples:
+      | name       |
+      | 'London'     |
+#      | 'Lisbon'     |
+#      | 'Cairns'     |
 #
 #  Scenario Outline: User calls current weather data using city ID <id>
 #    When Call current weather data for one location by city id <id>
