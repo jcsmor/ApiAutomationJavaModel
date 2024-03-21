@@ -29,10 +29,15 @@ public class Configuration
   @Before
   public static void setUp()
   {
-    //final WebDriver driver = new ChromeDriver();
-
-    WebDriverManager.chromedriver().setup();
-    final ChromeOptions options = new ChromeOptions();
+    ChromeOptions options = new ChromeOptions();
+    options.addArguments("disable-infobars");
+    options.addArguments("--lang=en");
+    options.addArguments("--no-sandbox");
+    options.addArguments("--disable-dev-shm-usage");
+    options.addArguments("--start-maximized");
+    options.addArguments("--disable-popup-blocking");
+    WebDriverManager.chromedriver().clearDriverCache().setup();
+    driver = new ChromeDriver(options);
 
     final LoggingPreferences logPrefs = new LoggingPreferences();
     logPrefs.enable(LogType.BROWSER, Level.ALL);
@@ -43,7 +48,6 @@ public class Configuration
     //options.addArguments("--remote-debugging-port=61379");
     //options.addArguments("--remote-allow-origins=http://localhost:61379");
 
-    driver = new ChromeDriver(options);
   }
 
 
